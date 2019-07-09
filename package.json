@@ -1,6 +1,6 @@
 {
-  "name": "nova-dirsummary",
-  "version": "1.0.3",
+  "name": "dirsummary",
+  "version": "0.0.0",
   "description": "Small tool to create a directory summary based on README files",
   "main": "index.js",
   "bin": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.novadiscovery.net/app/dirsummary.git"
+    "url": "https://github.com/nodys/dirsummary.git"
   },
   "keywords": [
     "summary",
