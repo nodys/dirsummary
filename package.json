@@ -1,6 +1,6 @@
 {
   "name": "dirsummary",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Small tool to create a directory summary based on README files",
   "main": "index.js",
   "bin": {
