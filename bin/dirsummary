@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+'use strict'
+
+const minimist = require('minimist')
+const glob = require('glob')
+const fs = require('fs')
+const path = require('path')
+const processFile = require('../lib/dirsummary.js').processFile
+
+const args = minimist(process.argv.slice(2), {
+  string: ['cwd', 'glob'],
+  boolean: ['help', 'version'],
+  alias: {
+    g: 'glob',
+    h: 'help',
+    V: 'version'
+  },
+  default: {
+    cwd: process.cwd(),
+    glob: '*/README.md'
+  }
+})
+
+if (args.help) {
+  console.log(fs.readFileSync(path.resolve(__dirname, 'help.txt'), 'utf8'))
+  process.exit(0)
+}
+
+if (args.version) {
+  console.log(require('../package.json').version)
+  process.exit(0)
+}
+
+glob.sync(args.glob, { cwd: args.cwd })
+  .map((file) => path.resolve(args.cwd, file))
+  .map((filepath) => processFile(filepath))
+  .map(data => console.log(JSON.stringify(data)))
